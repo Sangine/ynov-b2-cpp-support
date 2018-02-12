@@ -555,6 +555,66 @@ enum class Colors {black, blue, green, cyan, red, purple, yellow, white};
 ```
 
 
+### Création d'un environnement de travail 
+
+#### Rappels 
+
+- OS :  
+  - Linux
+  - MacOS
+  - Windows
+
+- Compilateurs :  
+  - gcc `apt-get install -y gcc g++` https://gcc.gnu.org/install/download.html  
+  - clang,  
+  - mingw http://www.mingw.orgmingw,  
+  - visual c++ http://landinghub.visualstudio.com/visual-cpp-build-tools 
+  
+- Le plus simple : linux (debian, ubuntu)
+
+#### Virtualisation pour un uniformiser 
+
+- VirtualBox
+- Docker 
+
+#### Docker Basics 
+
+- https://www.docker.com/what-container
+- Image : Dockerfile 
+- Container : Brick running container
+
+#### Docker Hands On
+
+- Download https://www.docker.com/community-edition#/download
+- Install ... 
+- Build image 
+```
+mkdir -p ~/dev/
+cd ~/dev/
+git clone https://github.com/miketardy-ynov-classroom/linux-gpp-cmake-docker
+cd linux-gpp-cmake-docker
+docker build -t linux-gpp-cmake-img .
+```
+- Run  
+  - `docker run -it linux-gpp-cmake-ctr linux-gpp-cmake-img`  
+  - `mkdir -p /home/dev/first-project`  
+  - `cd /home/dev/first-project`  
+  - `vi hello.cpp`
+```c++
+  #include<iostream>
+using namespace std;
+
+int main()
+{
+    double a(4.3), b(5.2);
+    cout << "Hello world " << endl << "a = " << a << endl << "b = " << b <<endl;
+    return 0;
+}
+```  
+  - `g++ *.cpp -std=c++11  -o hello-app`  
+  - `./hello-app`  
+
+
 
 
 
