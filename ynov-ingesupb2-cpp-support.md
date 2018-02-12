@@ -596,12 +596,12 @@ cd linux-gpp-cmake-docker
 docker build -t linux-gpp-cmake-img .
 ```
 - Run  
-  - `docker run -it linux-gpp-cmake-ctr linux-gpp-cmake-img`  
+  - `docker run -it --name linux-gpp-cmake-ctr linux-gpp-cmake-img`  
   - `mkdir -p /home/dev/first-project`  
   - `cd /home/dev/first-project`  
   - `vi hello.cpp`
 ```c++
-  #include<iostream>
+#include<iostream>
 using namespace std;
 
 int main()
