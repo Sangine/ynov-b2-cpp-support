@@ -567,7 +567,7 @@ enum class Colors {black, blue, green, cyan, red, purple, yellow, white};
 - Compilateurs :  
   - gcc `apt-get install -y gcc g++` https://gcc.gnu.org/install/download.html  
   - clang,  
-  - mingw http://www.mingw.orgmingw,  
+  - mingw http://www.mingw.org,  
   - visual c++ http://landinghub.visualstudio.com/visual-cpp-build-tools 
   
 - Le plus simple : linux (debian, ubuntu)
