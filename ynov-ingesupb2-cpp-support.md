@@ -572,15 +572,17 @@ enum class Colors {black, blue, green, cyan, red, purple, yellow, white};
   
 - Le plus simple : linux (debian, ubuntu)
 
-#### Virtualisation pour un uniformiser 
+#### Virtualisation pour un environnement de développement commun
 
-- VirtualBox
-- Docker 
+- VirtualBox https://www.virtualbox.org
+- Vagrant https://www.vagrantup.com
+- (VirtualBox , Vagrant ) + Ansible : https://www.ansible.com
+- Docker https://www.docker.com/
 
 #### Docker Basics 
 
 - https://www.docker.com/what-container
-- Image : Dockerfile 
+- Image : Dockerfile pour décrire le système
 - Container : Brick running container
 
 #### Docker Hands On
