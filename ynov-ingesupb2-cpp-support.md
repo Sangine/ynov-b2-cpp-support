@@ -596,7 +596,7 @@ cd linux-gpp-cmake-docker
 docker build -t linux-gpp-cmake-img .
 ```
 - Run  
-  - `docker run -it --name linux-gpp-cmake-ctr linux-gpp-cmake-img`  
+  - `docker run -it --name linux-gpp-cmake-ctr linux-gpp-cmake-img` ou `docker run -it --name linux-gpp-cmake-ctr -v /Development/share/dev/:/home/dev linux-gpp-cmake-img`  
   - `mkdir -p /home/dev/first-project`  
   - `cd /home/dev/first-project`  
   - `vi hello.cpp`
