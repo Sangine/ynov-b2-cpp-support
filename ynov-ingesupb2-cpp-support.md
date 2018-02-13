@@ -617,9 +617,280 @@ int main()
   - `g++ *.cpp -std=c++11  -o hello-app`  
   - `./hello-app`  
 
+## Compilation 
+
+### Plusieurs Options
+
+#### Option 1 : Execution du compilateur avec toutes les dependences nécessaires  
+
+- g++ ` g++ *.cpp -o app`
+- MinGW :  `g++ *.cpp -o app.exe`
+- Visual Studio -> Build
+- Code::Blocks -> Build
+
+#### Option 2 : Scripts bash 
+
+```bash
+#!/bin/bash
+
+name=$1
+
+g++ *.cpp -o ${name}
+```
+
+#### Option 3 : Utilisation d'un outil de build 
+
+- makefile : https://www.gnu.org/software/make/, https://cognitivewaves.wordpress.com/makefiles-windows/
+```bash
+# Spécifier le compilateur
+CC=g++
+
+CFLAGS=-c -Wall
+
+all: hello
+
+hello: main.o hello.o
+    $(CC) main.o hello.o -o hello
+
+main.o: main.cpp
+    $(CC) $(CFLAGS) main.cpp
+
+hello.o: hello.cpp
+    $(CC) $(CFLAGS) hello.cpp
+
+clean:
+    rm *o hello
+```
+
+- MSBuild (Visual Studio) https://msdn.microsoft.com/en-us/library/dd393573.aspx
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="Build">
+    <Message Text="Building msbuildintro" />
+    <MSBuild Projects="msbuildintro.csproj" Targets="Build" />
+  </Target>
+</Project>
+```
+
+- nmake (Visual studio, Windows) https://msdn.microsoft.com/en-us/library/dd9y37ha.aspx, http://www.bojankomazec.com/2011/10/nmake-and-its-environment.html
 
 
+#### Option 4 : Cmake
 
+Prise en charge de la création des scripts de build
+
+- Définition du comportement avec un ou plusieurs CMakeLists.txt
+- Execution avec 
+```bash
+cd build/path
+cmake <src/path>
+cmake --build .
+```
+
+### Introduction en CMake 
+
+https://cmake.org
+https://cmake.org/cmake/help/latest/index.html
+
+Outil de build, de test et de packaging cross-platform multi-language 
+
+- Support de plusieurs langages (ASM, ASM-ATT, ASM-MASM, ASM-NASM, C, CSharp. CUDA, CXX, Fortran, Java, RC (Windows Resource Compiler), Swift
+- Cross Platform 
+- Couteau suisse : gestion de build, de tests, de packaging
+- Langage de scripting
+
+
+#### Quelques opportunités fonctionnelles 
+
+- Parametrage, injections de variables et options
+- Inclusion des librairies externes 
+- Doxygen :  Documentation 
+- CTest : validation 
+- CDash : Dashboard de résultats  
+- CPack : Application Packaging
+
+
+#### Combinaisons d'outils 
+
+- CMake + Make + Gcc
+- CMake + MinGW + make
+- CMake + Xcode + clang
+- CMake + Code::Blocks
+- CMake + Visual Studio + Visual C++
+
+#### Notions de variables 
+
+Quelques exemples 
+- CMAKE_CXX_COMPILER
+- PROJECT_SOURCE_DIR, CMAKE_CURRENT_SOURCE_DIR, 
+- PROJECT_BINARY_DIR, CMAKE_CURRENT_BINARY_DIR, 
+
+Paramétrage 
+- via ligne de commande : `cmake .. -DCMAKE_CXX_COMPILER=g++`
+- dans le fichier CMakeLists.txt : `set(CMAKE_CXX_STANDARD 11)`
+
+#### Cmake : Etape par étape
+
+##### Menage dans le code (suggestion)
+
+- Sources dans ./src/
+- Build dans ./build/
+- Fichiers de config dans ./config/
+
+##### Création du premier projet 
+
+- Créer un fichier CMakeLists.txt
+- Initialiser `cmake_minimum_required (VERSION 2.6)`
+- Nommer le projet `project (Cmake Playground Project)`
+- Ajouter un executable `add_executable(App main.cpp)`
+
+
+##### Execution 
+
+- Créer un projet de build 
+`mkdir build; cd build`
+- Lancer CMake 
+`cmake ..`
+- Builder 
+`cmake --build .`
+
+##### Customisation
+
+- Spécifier le compilateur 
+`SET(CMAKE_CXX_COMPILER /path/to/cpp/compiler)`
+- Paramétrer le compilateur 
+```bash
+set(CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+```
+- Messages informatifs 
+`message("Cmake run successfully")`
+
+##### Introduction de doxygen
+
+http://www.stack.nl/~dimitri/doxygen/download.html
+
+- Création d'un fichier de configuration Doxyfile (ou Doxyfile.in)
+```
+OUTPUT_DIRECTORY        = @CMAKE_CURRENT_BINARY_DIR@/doc_doxygen/
+INPUT                   = @CMAKE_CURRENT_SOURCE_DIR@/../src/ @CMAKE_CURRENT_SOURCE
+
+PROJECT_NAME            = Playground application
+```
+
+- Introduction de doxygen dans cmake 
+```
+option(BUILD_DOC "Build documentation" ON)
+find_package(Doxygen)
+```
+
+```
+if (DOXYGEN_FOUND)
+    # set input and output files
+    set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/../docs/Doxyfile.in)
+    set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+
+    # request to configure the file
+    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+    message("Doxygen build started")
+
+    # note the option ALL which allows to build the docs together with the application
+    add_custom_target( doc_doxygen ALL
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Generating API documentation with Doxygen"
+        VERBATIM )
+else (DOXYGEN_FOUND)
+  message("Doxygen need to be installed to generate the doxygen documentation")
+endif (DOXYGEN_FOUND)
+```
+
+##### Introduction de tests
+
+- Activations de tests
+`enable_testing()`
+
+- ajout d'un test 
+
+`add_test (FirstTest App)`
+
+- Vérification des résultats 
+`set_tests_properties (FirstTest PROPERTIES PASS_REGULAR_EXPRESSION "Hello world")`
+
+- Déroulement de tests : `ctest` ou `make test`
+
+##### Introduction d'une librairie externe 
+
+Exemple d'easylogging https://muflihun.github.io/easyloggingpp/
+
+- inclure easylogging dans le code 
+```c++
+#include "easylogging++.h"
+ 
+INITIALIZE_EASYLOGGINGPP
+```
+- Eventuellement reconfigurer les règles de traçage
+```c++
+el::Loggers::reconfigureAllLoggers(conf("../config/logger.conf"));
+```
+```
+* GLOBAL:
+   FORMAT               =  "%datetime %msg"
+   FILENAME             =  "generator.log"
+   ENABLED              =  true
+   TO_FILE              =  true
+   TO_STANDARD_OUTPUT   =  true
+   SUBSECOND_PRECISION  =  6
+   PERFORMANCE_TRACKING =  true
+   MAX_LOG_FILE_SIZE    =  2097152 ## 2MB - Comment starts with two hashes (##)
+   LOG_FLUSH_THRESHOLD  =  100 ## Flush after every 100 logs
+* INFO:
+   ENABLED              =  true
+* DEBUG:
+   FORMAT               = "%datetime{%d/%M} %func %msg"
+   ENABLED              =  false
+```
+
+```c++
+```
+- Tracer les messages
+```c++
+LOG(INFO) << "Hello, world";
+```
+
+- Retour dans CMakeLists
+```
+target_link_libraries(ImageGenerator /usr/local/include/easylogging++.cc)
+```
+
+#### Packaging avec Cpack
+
+- Configuration dans CMake
+```
+# Numero de version
+set (App_VERSION_MAJOR 1)
+set (App_VERSION_MINOR 0)
+```
+```
+include (InstallRequiredSystemLibraries)
+set (CPACK_RESOURCE_FILE_LICENSE  
+     "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
+set (CPACK_RESOURCE_FILE_LICENSE  
+     "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+set (CPACK_PACKAGE_VERSION_MAJOR "${APP_VERSION_MAJOR}")
+set (CPACK_PACKAGE_VERSION_MINOR "${APP_VERSION_MINOR}")
+include (CPack)
+```
+
+- Execution
+```
+cmake ..
+cmake --build .
+cpack --config CPackConfig.cmake
+```
 
 ### Travaux pratiques : C++
 
@@ -635,3 +906,4 @@ int main()
 ### Travaux pratiques : CMake
 
 - https://github.com/ttroy50/cmake-examples
+- CMake Tutorial : https://cmake.org/cmake-tutorial/, https://gitlab.kitware.com/cmake/cmake/blob/master/Tests/Tutorial/
