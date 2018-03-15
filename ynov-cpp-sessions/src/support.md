@@ -155,7 +155,7 @@ https://www.tutorialspoint.com/cplusplus/
 ---
 
 ## Interface Utilisateur
-### Options : Platform specifique
+### Options : Platform specific
 
 - Windows : .NET
 - Linux : Xlib
@@ -235,12 +235,12 @@ https://www.qt.io/download
   - https://www.sfml-dev.org  
 
 - Traitement d'images :  
-  - http://itk.org/
-  - http://cimg.eu
+  - http://itk.org/  
+  - http://cimg.eu  
 
 - Apprentissage automatique :
-  - https://github.com/caffe2/caffe2
-  - https://github.com/Itseez/opencv
+  - https://github.com/caffe2/caffe2  
+  - https://github.com/Itseez/opencv  
 
 - https://github.com/fffaraz/awesome-cpp
 
@@ -248,4 +248,29 @@ https://www.qt.io/download
 
 ## Takeaways
 
-- Comme tout outils, C++ a son champs de
+- Comme tous les langages, C++ a son champs d'application
+- Savoir choisir le bon langage
+- Savoir rester efficace
+
+---
+
+## Takeaways
+### Quelques spécificités à prendre en compte
+
+- Courbe d'apprentissage assez raide
+- Spécificités plateforme
+
+---
+
+## Takeaways
+### Connaitres les outils :
+
+- Complitaeurs
+- Builders  
+- Gestion de build
+- Gestionnaires de dépendances
+- ...
+
+## Takeaways
+
+- Savoir chercher les informations
