@@ -1,4 +1,4 @@
-# Programmation Orientée Objet 
+# Programmation Orientée Objet
 
 ## Household
 
@@ -8,13 +8,13 @@ _Mickael Tardy, mickael.a.tardy@gmail.com_
 
 https://www.linkedin.com/in/mickael-tardy-54723235/
 
-## Planning 
+## Planning
 
 - Objectifs  
 - Généralités OOP
 - Univers C/C++
-- Principes de base 
-- Outils 
+- Principes de base
+- Outils
 
 ## Objectifs
 
@@ -24,19 +24,19 @@ https://www.linkedin.com/in/mickael-tardy-54723235/
 - Prise en main des outils
 
 
-## Prologue 
+## Prologue
 
 - Difficultés  
   - Sujet très large  
   - Beaucoup de spécificités et de détails  
 
-- Démarche 
-  - Maitrise de concepts de base 
-  - Apprendre à chercher l'information 
+- Démarche
+  - Maitrise de concepts de base
+  - Apprendre à chercher l'information
 
-## Resources 
+## Resources
 
-### Développer 
+### Développer
 
 - GPP/G++ : https://gcc.gnu.org
 - Visual C++  : http://landinghub.visualstudio.com/visual-cpp-build-tools ; https://docs.microsoft.com/en-us/cpp/
@@ -75,7 +75,7 @@ https://www.linkedin.com/in/mickael-tardy-54723235/
 - Frameworks et outils industriels  
   - dcmtk  
   - Kitware : ITK, VTK  
-- Jeux 
+- Jeux
 
 ## C++ vs. ...
 
@@ -86,16 +86,16 @@ https://www.linkedin.com/in/mickael-tardy-54723235/
   - JavaScript, Python, PHP  
 
 
-### Difficultés et obstacles 
+### Difficultés et obstacles
 
 https://www.quora.com/What-makes-C++-really-difficult-to-learn
 
 - Language très générique
 - Beaucoup (trop) de liberté : trust the programmer
 - Gestion de mémoire par le développeur
-- Syntaxe puissant et complèxe 
+- Syntaxe puissant et complèxe
 
-### Dernières évolutions 
+### Dernières évolutions
 
 - C++17 en 2017  
   - https://en.wikipedia.org/wiki/C%2B%2B17
@@ -112,21 +112,21 @@ https://www.quora.com/What-makes-C++-really-difficult-to-learn
 - Compilateur: gcc/g++, clang, visual c++
 - Debugger : LLDB (https://lldb.llvm.org)
 
-### Environnement utilitaire 
+### Environnement utilitaire
 
 - Doxygen : gestion de documentation
 - Easylogging : (un des) framework(s) de gestion de logs
 - CMake : gestion de build multi-platform
 - CTest : tests d'application
-- CPack : packaging 
+- CPack : packaging
 
 
 ## Programmation orientée objet
 
-### Notions 
+### Notions
 
 - Classes
-- Objets 
+- Objets
 - Abstraction
 - Polymorphisme
 
@@ -140,16 +140,16 @@ https://www.quora.com/What-makes-C++-really-difficult-to-learn
 
 ### Notions : Abstraction
 
-- Généralisations sur un ensemble de classes 
+- Généralisations sur un ensemble de classes
 
 ### Notions : Polymorphisme
 
-Capacité d'un objet de jouer plusieurs rôles 
+Capacité d'un objet de jouer plusieurs rôles
 
-## Notions : Heritage 
+## Notions : Heritage
 
-## Notions 
-- Heritage (en: inheritance) vs Composition 
+## Notions
+- Heritage (en: inheritance) vs Composition
 
 ### Principes SOLID
 
@@ -184,7 +184,7 @@ préférer plusieurs interfaces spécifiques pour chaque client plutôt qu'une s
 *Dependency inversion principle (Inversion des dépendances)*
 il faut dépendre des abstractions, pas des implémentations
 
-## Introduction dans la syntaxe 
+## Introduction dans la syntaxe
 
 ### Premier aperçu du code
 
@@ -220,22 +220,22 @@ namespace test {
  */
 int main()
 {
-  
+
   test::createAndCallHelloer();
   cout << newline;
-  
+
   string mess = "Yo";
   string* messPtr = &mess;
-  
+
   test::createAndCallHelloer(*messPtr);
-  
+
   return 0;
 }
 ```
 
-### Compilation 
+### Compilation
 
-- GCC: 
+- GCC:
 ```bash
 g++ -std=c++11 program.cpp -o program
 ```
@@ -245,21 +245,21 @@ g++ -std=c++11 program.cpp -o program
 clang++ -std=c++11 -stdlib=libc++ example.cpp -o example_program
 ```
 
-### Bases 
+### Bases
 
-#### Variables et types 
+#### Variables et types
 
 
 ```c++
 boolean a;
 float mynumber;
-double b,c,d;	
+double b,c,d;
 int x = 0;
 int y (0);
 ```
 
 
-#### Constantes et Preprocesseurs 
+#### Constantes et Preprocesseurs
 
 
 ```c++
@@ -273,7 +273,7 @@ const char newline = '\n';
 ```
 
 
-#### Operateurs 
+#### Operateurs
 
 - Affectation (=)
 - Arithmétique (+, -, *, /, % )
@@ -284,7 +284,7 @@ const char newline = '\n';
 - Opération ternaire ( ?  : )
 - Operateurs de bit ( &, |, ^, ~, <<, >> )
 
-#### Input / Output 
+#### Input / Output
 
 
 ```c++
@@ -307,13 +307,12 @@ int main ()
 
 #### Gestion de flux
 
-- switch (case, break, default) : *Attention* Seulement constantes 
+- switch (case, break, default) : *Attention* Seulement constantes
 - boucles (for, while, do... while)
 - (Bonus) goto : https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf
 
 
 ```c++
-// range-based for loop
 #include <iostream>
 #include <string>
 using namespace std;
@@ -330,16 +329,16 @@ int main ()
 ```
 
 
-#### Functions 
+#### Functions
 
-- Déclaration et implementation 
+- Déclaration et implementation
 - Valeurs retournées : type ou void
-- Valeurs de paramètres par défaut 
+- Valeurs de paramètres par défaut
 - Arguments : par valeur ou par référence
 - Prefix inline : injection de la fonction à l'endroit de l'appel
-- Recursivité : capacité de la fonction de faire appel à elle même 
-- Overloading : déclaration multiple 
-- templates 
+- Recursivité : capacité de la fonction de faire appel à elle même
+- Overloading : déclaration multiple
+- templates
 
 
 ```c++
@@ -393,16 +392,16 @@ int main () {
 ```
 
 
-#### Scope 
+#### Scope
 
 - Blocks
-- Namespaces 
+- Namespaces
 
 
-#### Tableaux 
+#### Tableaux
 
 - Initialization :  
-  - Déclaration de la taille obligatoire 
+  - Déclaration de la taille obligatoire
   - La taille doit être connue lors de compilation
   - `int foo [5];`  
   - `int bar [5] = { 10, 20, 30 };`  
@@ -414,7 +413,7 @@ int main () {
 - Librarie arrays  
   - `#include <array>`  
 
-#### Pointeurs 
+#### Pointeurs
 
 - Adresse (memoire) : `foo = &myvar;`
 ```c++
@@ -423,7 +422,7 @@ foo = &myvar;
 bar = myvar;
 ```
 
-- Accès à valeur 
+- Accès à valeur
 ```c++
 myvar == 25
 &myvar == 1776
@@ -431,7 +430,7 @@ foo == 1776
 *foo == 25
 ```
 
-- Initialization 
+- Initialization
 ```c++
 int myvar;
 int * myptr = &myvar;
@@ -469,9 +468,9 @@ int main ()
 }
 ```
 
-#### Structures 
+#### Structures
 
-- Groupment des attributs 
+- Groupment des attributs
 
 ```c++
 struct type_name {
@@ -518,7 +517,7 @@ int main ()
 }
 ```
 
-#### Alias de types 
+#### Alias de types
 
 - typedef
 ```c++
@@ -532,7 +531,7 @@ typedef char field [50];
 using C = char;
 using WORD = unsigned int;
 using pChar = char *;
-using field = char [50]; 
+using field = char [50];
 ```
 
 - Unions : a ne pas confondre avec les struct
@@ -555,9 +554,9 @@ enum class Colors {black, blue, green, cyan, red, purple, yellow, white};
 ```
 
 
-### Création d'un environnement de travail 
+### Création d'un environnement de travail
 
-#### Rappels 
+#### Rappels
 
 - OS :  
   - Linux
@@ -568,8 +567,8 @@ enum class Colors {black, blue, green, cyan, red, purple, yellow, white};
   - gcc `apt-get install -y gcc g++` https://gcc.gnu.org/install/download.html  
   - clang,  
   - mingw http://www.mingw.org,  
-  - visual c++ http://landinghub.visualstudio.com/visual-cpp-build-tools 
-  
+  - visual c++ http://landinghub.visualstudio.com/visual-cpp-build-tools
+
 - Le plus simple : linux (debian, ubuntu)
 
 #### Virtualisation pour un environnement de développement commun
@@ -577,10 +576,10 @@ enum class Colors {black, blue, green, cyan, red, purple, yellow, white};
 - VirtualBox https://www.virtualbox.org
 - Vagrant https://www.vagrantup.com
 - (VirtualBox , Vagrant ) + Ansible : https://www.ansible.com
-- Docker https://www.docker.com/ 
+- Docker https://www.docker.com/
 - Docker Toolbox https://docs.docker.com/toolbox/toolbox_install_windows/
 
-#### Docker Basics 
+#### Docker Basics
 
 - https://www.docker.com/what-container
 - Image : Dockerfile pour décrire le système
@@ -589,8 +588,8 @@ enum class Colors {black, blue, green, cyan, red, purple, yellow, white};
 #### Docker Hands On
 
 - Download https://www.docker.com/community-edition#/download
-- Install ... 
-- Build image 
+- Install ...
+- Build image
 ```
 mkdir -p ~/dev/
 cd ~/dev/
@@ -617,7 +616,7 @@ int main()
   - `g++ *.cpp -std=c++11  -o hello-app`  
   - `./hello-app`  
 
-## Compilation 
+## Compilation
 
 ### Plusieurs Options
 
@@ -628,7 +627,7 @@ int main()
 - Visual Studio -> Build
 - Code::Blocks -> Build
 
-#### Option 2 : Scripts bash 
+#### Option 2 : Scripts bash
 
 ```bash
 #!/bin/bash
@@ -638,7 +637,7 @@ name=$1
 g++ *.cpp -o ${name}
 ```
 
-#### Option 3 : Utilisation d'un outil de build 
+#### Option 3 : Utilisation d'un outil de build
 
 - makefile : https://www.gnu.org/software/make/, https://cognitivewaves.wordpress.com/makefiles-windows/
 ```bash
@@ -682,37 +681,37 @@ clean:
 Prise en charge de la création des scripts de build
 
 - Définition du comportement avec un ou plusieurs CMakeLists.txt
-- Execution avec 
+- Execution avec
 ```bash
 cd build/path
 cmake <src/path>
 cmake --build .
 ```
 
-### Introduction en CMake 
+### Introduction en CMake
 
 https://cmake.org
 https://cmake.org/cmake/help/latest/index.html
 
-Outil de build, de test et de packaging cross-platform multi-language 
+Outil de build, de test et de packaging cross-platform multi-language
 
 - Support de plusieurs langages (ASM, ASM-ATT, ASM-MASM, ASM-NASM, C, CSharp. CUDA, CXX, Fortran, Java, RC (Windows Resource Compiler), Swift
-- Cross Platform 
+- Cross Platform
 - Couteau suisse : gestion de build, de tests, de packaging
 - Langage de scripting
 
 
-#### Quelques opportunités fonctionnelles 
+#### Quelques opportunités fonctionnelles
 
 - Parametrage, injections de variables et options
-- Inclusion des librairies externes 
-- Doxygen :  Documentation 
-- CTest : validation 
+- Inclusion des librairies externes
+- Doxygen :  Documentation
+- CTest : validation
 - CDash : Dashboard de résultats  
 - CPack : Application Packaging
 
 
-#### Combinaisons d'outils 
+#### Combinaisons d'outils
 
 - CMake + Make + Gcc
 - CMake + MinGW + make
@@ -720,14 +719,14 @@ Outil de build, de test et de packaging cross-platform multi-language
 - CMake + Code::Blocks
 - CMake + Visual Studio + Visual C++
 
-#### Notions de variables 
+#### Notions de variables
 
-Quelques exemples 
+Quelques exemples
 - CMAKE_CXX_COMPILER
-- PROJECT_SOURCE_DIR, CMAKE_CURRENT_SOURCE_DIR, 
-- PROJECT_BINARY_DIR, CMAKE_CURRENT_BINARY_DIR, 
+- PROJECT_SOURCE_DIR, CMAKE_CURRENT_SOURCE_DIR,
+- PROJECT_BINARY_DIR, CMAKE_CURRENT_BINARY_DIR,
 
-Paramétrage 
+Paramétrage
 - via ligne de commande : `cmake .. -DCMAKE_CXX_COMPILER=g++`
 - dans le fichier CMakeLists.txt : `set(CMAKE_CXX_STANDARD 11)`
 
@@ -739,7 +738,7 @@ Paramétrage
 - Build dans ./build/
 - Fichiers de config dans ./config/
 
-##### Création du premier projet 
+##### Création du premier projet
 
 - Créer un fichier CMakeLists.txt
 - Initialiser `cmake_minimum_required (VERSION 2.6)`
@@ -747,26 +746,26 @@ Paramétrage
 - Ajouter un executable `add_executable(App main.cpp)`
 
 
-##### Execution 
+##### Execution
 
-- Créer un projet de build 
+- Créer un projet de build
 `mkdir build; cd build`
-- Lancer CMake 
+- Lancer CMake
 `cmake ..`
-- Builder 
+- Builder
 `cmake --build .`
 
 ##### Customisation
 
-- Spécifier le compilateur 
+- Spécifier le compilateur
 `SET(CMAKE_CXX_COMPILER /path/to/cpp/compiler)`
-- Paramétrer le compilateur 
+- Paramétrer le compilateur
 ```bash
 set(CMAKE_CXX_STANDARD 11)
 set (CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ```
-- Messages informatifs 
+- Messages informatifs
 `message("Cmake run successfully")`
 
 ##### Introduction de doxygen
@@ -781,9 +780,59 @@ INPUT                   = @CMAKE_CURRENT_SOURCE_DIR@/../src/ @CMAKE_CURRENT_SOUR
 PROJECT_NAME            = Playground application
 ```
 
-- Introduction de doxygen dans cmake 
+- Introduction de doxygen dans cmake
+
+
+```c++
+/** @file hello.cpp
+ *  @brief Playground app
+ *
+ * App
+ *
+ *  @author Mike Tardy (mickaeltardy)
+ *  @bug No known bugs.
+ */
+#include<iostream>
+using namespace std;
+#include "/usr/local/include/easylogging++.h"
+
+INITIALIZE_EASYLOGGINGPP
+
+
+
+/** @brief Reads image
+ *
+ *  Reads an image from file
+ *
+ *  @param a input int
+ *  @return output int
+ */
+int doThing (int a);
+
+
+/** @brief Main app
+ *
+ * Main method of my hello app
+ * @return test
+ */
+int main()
+{
+    double a(4.3), b(5.2);
+
+    LOG(INFO) << "Hello, world";
+
+    cout << "Hello everybody " << endl << "a = " << a << endl << "b = " << b <<endl;
+    return 0;
+}
+
+int doThing (int a) {
+  return a+10;
+}
+
 ```
-option(BUILD_DOC "Build documentation" ON)
+
+
+```
 find_package(Doxygen)
 ```
 
@@ -813,23 +862,23 @@ endif (DOXYGEN_FOUND)
 - Activations de tests
 `enable_testing()`
 
-- ajout d'un test 
+- ajout d'un test
 
 `add_test (FirstTest App)`
 
-- Vérification des résultats 
+- Vérification des résultats
 `set_tests_properties (FirstTest PROPERTIES PASS_REGULAR_EXPRESSION "Hello world")`
 
 - Déroulement de tests : `ctest` ou `make test`
 
-##### Introduction d'une librairie externe 
+##### Introduction d'une librairie externe
 
 Exemple d'easylogging https://muflihun.github.io/easyloggingpp/
 
-- inclure easylogging dans le code 
+- inclure easylogging dans le code
 ```c++
 #include "easylogging++.h"
- 
+
 INITIALIZE_EASYLOGGINGPP
 ```
 - Eventuellement reconfigurer les règles de traçage
@@ -875,14 +924,29 @@ set (App_VERSION_MAJOR 1)
 set (App_VERSION_MINOR 0)
 ```
 ```
-include (InstallRequiredSystemLibraries)
-set (CPACK_RESOURCE_FILE_LICENSE  
+# Numero de version
+set (APP_VERSION_MAJOR 1)
+set (APP_VERSION_MINOR 0)
+
+set(CPACK_GENERATOR "ZIP")
+
+
+set (CPACK_RESOURCE_FILE_LICENSE
      "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
-set (CPACK_RESOURCE_FILE_LICENSE  
+set (CPACK_PACKAGE_DESCRIPTION_FILE
      "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+
 set (CPACK_PACKAGE_VERSION_MAJOR "${APP_VERSION_MAJOR}")
 set (CPACK_PACKAGE_VERSION_MINOR "${APP_VERSION_MINOR}")
-include (CPack)
+
+set(CPACK_COMPONENTS_ALL_IN_ONE_PACKAGE 1)
+
+INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+        DESTINATION .)
+
+install(TARGETS App
+       RUNTIME
+       DESTINATION bin)
 ```
 
 - Execution
@@ -891,6 +955,14 @@ cmake ..
 cmake --build .
 cpack --config CPackConfig.cmake
 ```
+
+
+#### Interfaces Graphiques
+
+http://doc.qt.io/qt-5/qtquick-window-main-cpp.html
+
+https://doc.qt.io/qt-5.10/cmake-manual.html
+
 
 ### Travaux pratiques : C++
 
